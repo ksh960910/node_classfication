@@ -27,4 +27,4 @@ if __name__ == '__main__':
     decay = u.args.decay
 
     trainer = _trainer.Trainer(model, data, learning_rate, decay)
-    trainer.train()
+    trainer.train_epoch()

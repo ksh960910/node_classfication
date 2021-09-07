@@ -13,7 +13,7 @@ class Trainer():
                                 weight_decay = decay)
         self.criterion = torch.nn.CrossEntropyLoss()                           
 
-    def train_epoch(self):
+    def train(self):
         self.model.train()
         self.optimizer.zero_grad()
         # 전체 node에 feature가 있기 때문에 전체 data를 사용하여 모델에 forward 시켜줌. 
@@ -42,11 +42,11 @@ class Trainer():
         return test_acc
 
         
-    def train(self):
+    def train_epoch(self):
         losses = []
         val_losses = []
         for epoch in range(0, u.args.epochs+1):
-            loss, train_acc, val_loss, val_acc = self.train_epoch()
+            loss, train_acc, val_loss, val_acc = self.train()
             losses.append(loss)
             val_losses.append(val_loss)
             if epoch % 20 == 0:
